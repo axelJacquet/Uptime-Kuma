@@ -1,0 +1,27 @@
+type: install
+name: Kuma
+categories: ["apps/dev-and-admin-tools"]
+baseUrl: https://raw.githubusercontent.com/axelJacquet/Uptime-Kuma/main/
+logo: image/kuma.png
+homepage: https://github.com/louislam/uptime-kuma
+description: |
+        Self-hosted monitoring tool.
+ssl: true
+
+nodes:
+  - nodeType: nginx
+    nodeGroup: bl
+    count: 1
+    cloudlets: 8
+    
+  - image: louislam/uptime-kuma
+    count: 1
+    cloudlets: 16
+    nodeGroup: cp
+    volumes:
+     - /app/data
+success: |
+  ## [Uptime Kuma](${env.url}) is ready
+  
+  Wait few minutes to have running environment.
+
